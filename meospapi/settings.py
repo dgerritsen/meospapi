@@ -46,7 +46,8 @@ INSTALLED_APPS = [
 ]
 
 CORS_ORIGIN_WHITELIST = (
-    'meospa.nl'
+    'meospa.nl',
+    'localhost',
 )
 
 MIDDLEWARE_CLASSES = [
