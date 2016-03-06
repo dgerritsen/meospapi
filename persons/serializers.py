@@ -7,7 +7,7 @@ class PersonSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Person
-        fields = ('url', 'display_name', 'first_name', 'last_name', 'bsn', 'birth_date', 'birth_place', 'driverslicenses')
+        fields = ('url', 'display_name', 'initials', 'first_name', 'last_name', 'bsn', 'birth_date', 'birth_place', 'driverslicenses')
 
 
 class PersonViewSet(viewsets.ModelViewSet):
