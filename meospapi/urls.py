@@ -1,8 +1,9 @@
-from django.conf.urls import url, include
+from django.conf.urls import url, include, patterns
 from django.conf import settings
 from django.contrib.auth.models import User
 from rest_framework import routers, serializers, viewsets
 from django.conf.urls.static import static
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 # Serializers define the API representation.
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -24,4 +25,10 @@ router.register(r'users', UserViewSet)
 urlpatterns = [
     url(r'^', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+]
+
+urlpatterns += patterns('', (
+    r'^static/(?P<path>.*)$',
+    'django.views.static.serve',
+    {'document_root': settings.STATIC_ROOT}
+))
