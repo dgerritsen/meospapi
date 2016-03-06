@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'persons',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -77,7 +78,7 @@ WSGI_APPLICATION = 'meospapi.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
-DATABASES = {'default': dj_database_url.config()}
+DATABASES = {'default': dj_database_url.config(default='postgres://Dion:@localhost/meospapi')}
 
 
 # Password validation
