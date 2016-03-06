@@ -50,6 +50,8 @@ CORS_ORIGIN_WHITELIST = (
     'localhost',
 )
 
+CORS_ORIGIN_REGEX_WHITELIST = ('^((http:\/\/)?([a-zA-Z0-9]+.)?localhost(:[0-9]{1,4})?)$', )
+
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
