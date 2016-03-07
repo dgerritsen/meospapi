@@ -1,18 +1,16 @@
-from persons.models import Person, DriversLicense
+from persons.models import Person, DriversLicense, DangerClass, Registration
 from rest_framework import routers, serializers, viewsets
 
 
-class PersonSerializer(serializers.HyperlinkedModelSerializer):
-    driverslicenses = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
-
+class DangerClassSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = Person
-        fields = ('url', 'display_name', 'initials', 'first_name', 'last_name', 'bsn', 'birth_date', 'birth_place', 'driverslicenses')
+        model = DangerClass
+        fields = ('id', 'url', 'code', 'description')
 
 
-class PersonViewSet(viewsets.ModelViewSet):
-    queryset = Person.objects.all()
-    serializer_class = PersonSerializer
+class DangerClassViewSet(viewsets.ModelViewSet):
+    queryset = DangerClass.objects.all()
+    serializer_class = DangerClassSerializer
 
 
 class DriverslicenseSerializer(serializers.HyperlinkedModelSerializer):
@@ -24,3 +22,49 @@ class DriverslicenseSerializer(serializers.HyperlinkedModelSerializer):
 class DriverslicenseViewSet(viewsets.ModelViewSet):
     queryset = DriversLicense.objects.all()
     serializer_class = DriverslicenseSerializer
+
+
+class RegistrationSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Registration
+        fields = ('id', 'url', 'person', 'title', 'mk', 'role', 'type', 'date')
+
+
+class RegistrationViewSet(viewsets.ModelViewSet):
+    queryset = Registration.objects.all()
+    serializer_class = RegistrationSerializer
+
+
+class PersonSerializer(serializers.HyperlinkedModelSerializer):
+    driverslicenses = DriverslicenseSerializer(many=True)
+    dangers = DangerClassSerializer(many=True)
+    registrations = RegistrationSerializer(many=True)
+
+    class Meta:
+        model = Person
+        fields = (
+            'id',
+            'url',
+            'keno',
+            'display_name',
+            'initials',
+            'first_name',
+            'last_name',
+            'gender',
+            'bsn',
+            'birth_date',
+            'birth_place',
+            'birth_country',
+            'nationality',
+            'driverslicenses',
+            'dangers',
+            'registrations',
+        )
+
+
+class PersonViewSet(viewsets.ModelViewSet):
+    queryset = Person.objects.all()
+    serializer_class = PersonSerializer
+
+
+

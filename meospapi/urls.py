@@ -4,12 +4,14 @@ from django.contrib.auth.models import User
 from rest_framework import routers, serializers, viewsets
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from persons.serializers import PersonViewSet, DriverslicenseViewSet
+from persons.serializers import PersonViewSet, DriverslicenseViewSet, DangerClassViewSet, RegistrationViewSet
 
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
 router.register(r'persons', PersonViewSet)
 router.register(r'driverslicense', DriverslicenseViewSet)
+router.register(r'dangerclass', DangerClassViewSet)
+router.register(r'registration', RegistrationViewSet)
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
