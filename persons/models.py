@@ -48,7 +48,7 @@ class Person(models.Model):
         return self.last_name + ', ' + self.initials + ' (' + self.first_name + ')'
 
     def keno(self):
-        return self.last_name[:3] + self.first_name[0] + self.birth_date.strftime('%y%m%d')
+        return self.last_name[:4].lower() + self.first_name[0].lower() + self.birth_date.strftime('%y%m%d')
 
 
 class DriversLicense(models.Model):
