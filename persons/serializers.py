@@ -1,4 +1,4 @@
-from persons.models import Person, DriversLicense, DangerClass, Registration
+from persons.models import Person, DriversLicense, DangerClass, Registration, Address
 from rest_framework import routers, serializers, viewsets
 
 
@@ -22,6 +22,17 @@ class DriverslicenseSerializer(serializers.HyperlinkedModelSerializer):
 class DriverslicenseViewSet(viewsets.ModelViewSet):
     queryset = DriversLicense.objects.all()
     serializer_class = DriverslicenseSerializer
+
+
+class AddressSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Address
+        fields = ('id', 'url', 'person', 'town', 'city', 'postal_code', 'street', 'number', 'country')
+
+
+class AddressViewSet(viewsets.ModelViewSet):
+    queryset = Address.objects.all()
+    serializer_class = AddressSerializer
 
 
 class RegistrationSerializer(serializers.HyperlinkedModelSerializer):
