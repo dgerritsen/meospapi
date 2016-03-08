@@ -2,6 +2,11 @@ from persons.models import Person, DriversLicense, DangerClass, Registration
 from rest_framework import routers, serializers, viewsets
 
 
+from myapp.models import Purchase
+from myapp.serializers import PurchaseSerializer
+from rest_framework import generics
+
+
 class DangerClassSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = DangerClass
@@ -67,4 +72,16 @@ class PersonViewSet(viewsets.ModelViewSet):
     serializer_class = PersonSerializer
 
 
+class PersonList(generics.ListAPIView):
+    serializer_class = PersonSerializer
 
+    def get_queryset(self):
+        """
+        Optionally restricts the returned purchases to a given user,
+        by filtering against a `username` query parameter in the URL.
+        """
+        queryset = Person.objects.all()
+        keno = self.request.query_params.get('keno', None)
+        if keno is not None:
+            queryset = queryset.filter(keno=keno)
+        return queryset
