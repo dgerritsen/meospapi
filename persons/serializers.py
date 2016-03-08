@@ -1,9 +1,5 @@
 from persons.models import Person, DriversLicense, DangerClass, Registration
 from rest_framework import routers, serializers, viewsets
-
-
-from myapp.models import Purchase
-from myapp.serializers import PurchaseSerializer
 from rest_framework import generics
 
 
