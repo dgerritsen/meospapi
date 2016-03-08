@@ -50,6 +50,7 @@ class PersonSerializer(serializers.HyperlinkedModelSerializer):
     driverslicenses = DriverslicenseSerializer(many=True)
     dangers = DangerClassSerializer(many=True)
     registrations = RegistrationSerializer(many=True)
+    addresses = AddressSerializer(many=True)
 
     class Meta:
         model = Person
@@ -67,6 +68,7 @@ class PersonSerializer(serializers.HyperlinkedModelSerializer):
             'birth_place',
             'birth_country',
             'nationality',
+            'addresses',
             'driverslicenses',
             'dangers',
             'registrations',
