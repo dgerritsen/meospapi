@@ -61,7 +61,7 @@ class PersonSignal(models.Model):
     register = models.CharField(max_length=50)
 
     def __unicode__(self):
-        return self.person + ' (' + self.register + ')'
+        return self.person.display_name() + ' (' + self.register + ')'
 
 
 class DriversLicense(models.Model):
