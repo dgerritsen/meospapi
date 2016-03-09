@@ -1,4 +1,4 @@
-from persons.models import Person, DriversLicense, DangerClass, Registration, Address
+from persons.models import Person, PersonSignal, DriversLicense, DangerClass, Registration, Address
 from rest_framework import routers, serializers, viewsets
 
 
@@ -46,11 +46,17 @@ class RegistrationViewSet(viewsets.ModelViewSet):
     serializer_class = RegistrationSerializer
 
 
+class PersonSignalSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = PersonSignal
+
+
 class PersonSerializer(serializers.HyperlinkedModelSerializer):
     driverslicenses = DriverslicenseSerializer(many=True)
     dangers = DangerClassSerializer(many=True)
     registrations = RegistrationSerializer(many=True)
     addresses = AddressSerializer(many=True)
+    signals = PersonSignalSerializer(many=True)
 
     class Meta:
         model = Person
@@ -72,6 +78,7 @@ class PersonSerializer(serializers.HyperlinkedModelSerializer):
             'driverslicenses',
             'dangers',
             'registrations',
+            'signals',
         )
 
 
