@@ -49,6 +49,7 @@ class RegistrationViewSet(viewsets.ModelViewSet):
 class PersonSignalSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = PersonSignal
+        fields = ('id', 'url', 'code')
 
 
 class PersonSerializer(serializers.HyperlinkedModelSerializer):
