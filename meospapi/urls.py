@@ -6,6 +6,8 @@ from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from persons.serializers import PersonViewSet, DriverslicenseViewSet, DangerClassViewSet, RegistrationViewSet, AddressViewSet
 from vehicles.serializers import VehicleViewSet, VehicleSignalViewSet
+from django.conf.urls import url
+from django.contrib import admin
 
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
@@ -21,7 +23,8 @@ router.register(r'vehiclesignals', VehicleSignalViewSet)
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
     url(r'^', include(router.urls)),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^admin/', admin.site.urls),
 ]
 
 urlpatterns += patterns('', (
