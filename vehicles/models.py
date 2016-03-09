@@ -23,7 +23,7 @@ class Vehicle(models.Model):
 
 
 class VehicleSignal(models.Model):
-    vehicle = models.ForeignKey(Vehicle)
+    vehicle = models.ForeignKey(Vehicle, related_name='signals')
     code = models.CharField(max_length=10)
     status = models.CharField(max_length=100)
     start_date = models.DateField()

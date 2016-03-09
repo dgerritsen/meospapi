@@ -51,6 +51,19 @@ class Person(models.Model):
         return self.last_name[:4].lower() + self.first_name[0].lower() + self.birth_date.strftime('%y%m%d')
 
 
+class PersonSignal(models.Model):
+    person = models.ForeignKey(Person, related_name='signals')
+    code = models.CharField(max_length=10)
+    status = models.CharField(max_length=100)
+    start_date = models.DateField()
+    organization = models.CharField(max_length=100)
+    reference = models.CharField(max_length=100)
+    register = models.CharField(max_length=50)
+
+    def __unicode__(self):
+        return self.person + ' (' + self.register + ')'
+
+
 class DriversLicense(models.Model):
     person = models.ForeignKey(Person, related_name='driverslicenses')
     number = models.CharField(max_length=30)
