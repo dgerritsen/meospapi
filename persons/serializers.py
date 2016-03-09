@@ -52,6 +52,11 @@ class PersonSignalSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('id', 'url', 'code')
 
 
+class PersonSignalViewSet(viewsets.ModelViewSet):
+    queryset = PersonSignal.objects.all()
+    serializer_class = PersonSignalSerializer
+
+
 class PersonSerializer(serializers.HyperlinkedModelSerializer):
     driverslicenses = DriverslicenseSerializer(many=True)
     dangers = DangerClassSerializer(many=True)

@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from rest_framework import routers, serializers, viewsets
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from persons.serializers import PersonViewSet, DriverslicenseViewSet, DangerClassViewSet, RegistrationViewSet, AddressViewSet
+from persons.serializers import PersonViewSet, PersonSignalViewSet, DriverslicenseViewSet, DangerClassViewSet, RegistrationViewSet, AddressViewSet
 from vehicles.serializers import VehicleViewSet, VehicleSignalViewSet
 from django.conf.urls import url
 from django.contrib import admin
@@ -12,6 +12,7 @@ from django.contrib import admin
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
 router.register(r'persons', PersonViewSet)
+router.register(r'personsignals', PersonSignalViewSet)
 router.register(r'driverslicense', DriverslicenseViewSet)
 router.register(r'dangerclass', DangerClassViewSet)
 router.register(r'registration', RegistrationViewSet)
