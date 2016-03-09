@@ -1,5 +1,5 @@
 from django.contrib import admin
-from persons.models import Person, PersonSignal, DriversLicense, Address, Registration
+from persons.models import Person, PersonSignal, DriversLicense, Address, Registration, DangerClass
 
 
 class DriversLicenseAdmin(admin.StackedInline):
@@ -31,3 +31,4 @@ class PersonAdmin(admin.ModelAdmin):
     ]
 
 admin.site.register(Person, PersonAdmin)
+admin.site.register(DangerClass)

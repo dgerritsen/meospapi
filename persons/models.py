@@ -39,7 +39,7 @@ class Person(models.Model):
     birth_place = models.CharField(max_length=200)
     birth_country = models.CharField(max_length=200)
     nationality = models.CharField(max_length=200)
-    dangers = models.ManyToManyField(DangerClass)
+    dangers = models.ManyToManyField(DangerClass, blank=True, null=True)
 
     def __unicode__(self):
         return self.initials + ' ' + self.last_name + ' (' + self.first_name + ')'
