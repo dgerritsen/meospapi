@@ -4,7 +4,7 @@ from persons.models import Person
 
 
 class Vehicle(models.Model):
-    owner = models.ForeignKey(Person)
+    owner = models.ForeignKey(Person, related_name='vehicles')
     license = models.CharField(max_length=20)
     vin = models.CharField(max_length=40)
     apk_valid_until = models.DateField()
