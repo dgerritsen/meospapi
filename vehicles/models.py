@@ -10,6 +10,7 @@ class Vehicle(models.Model):
     apk_valid_until = models.DateField()
     brand = models.CharField(max_length=40)
     type = models.CharField(max_length=40)
+    color = models.CharField(max_length=40, default='Onbekend')
     category = models.CharField(max_length=40)
 
     insured = models.BooleanField(default=True)
@@ -20,6 +21,9 @@ class Vehicle(models.Model):
 
     def __unicode__(self):
         return self.license
+
+    def display_name(self):
+        return self.brand + ' ' + self.type + ' (' + self.color + ')'
 
 
 class VehicleSignal(models.Model):
