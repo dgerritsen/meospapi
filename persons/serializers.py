@@ -66,6 +66,20 @@ class PersonSignalViewSet(viewsets.ModelViewSet):
     serializer_class = PersonSignalSerializer
 
 
+class SmallPersonSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Person
+        fields = (
+            'id',
+            'keno',
+            'display_name',
+            'addresses',
+            'bsn',
+            'birth_date',
+            'birth_place',
+        )
+
+
 class PersonSerializer(serializers.HyperlinkedModelSerializer):
     driverslicenses = DriverslicenseSerializer(many=True)
     dangers = DangerClassSerializer(many=True)
@@ -89,6 +103,7 @@ class PersonSerializer(serializers.HyperlinkedModelSerializer):
             'birth_place',
             'birth_country',
             'nationality',
+            'main_address',
             'addresses',
             'driverslicenses',
             'dangers',

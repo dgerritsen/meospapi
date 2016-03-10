@@ -1,4 +1,5 @@
 from vehicles.models import Vehicle, VehicleSignal
+from persons.serializers import SmallPersonSerializer
 from rest_framework import routers, serializers, viewsets
 
 
@@ -22,12 +23,14 @@ class VehicleSignalViewSet(viewsets.ModelViewSet):
 
 class VehicleSerializer(serializers.HyperlinkedModelSerializer):
     signals = VehicleSignalSerializer(many=True)
+    owner = SmallPersonSerializer(many=False)
 
     class Meta:
         model = Vehicle
         fields = (
             'id',
             'url',
+            'owner',
             'license',
             'display_name',
             'brand',
