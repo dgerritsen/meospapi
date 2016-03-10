@@ -73,6 +73,9 @@ class SmallPersonSerializer(serializers.ModelSerializer):
         fields = (
             'id',
             'keno',
+            'initials',
+            'first_name',
+            'last_name',
             'display_name',
             'addresses',
             'bsn',
