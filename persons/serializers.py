@@ -104,7 +104,6 @@ class PersonSerializer(serializers.HyperlinkedModelSerializer):
             'birth_place',
             'birth_country',
             'nationality',
-            'main_address',
             'addresses',
             'driverslicenses',
             'dangers',
