@@ -67,6 +67,7 @@ class PersonSignalViewSet(viewsets.ModelViewSet):
 
 
 class SmallPersonSerializer(serializers.ModelSerializer):
+    addresses = AddressSerializer(many=True)
     class Meta:
         model = Person
         fields = (
