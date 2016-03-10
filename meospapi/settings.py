@@ -51,7 +51,10 @@ CORS_ORIGIN_WHITELIST = (
     'localhost',
 )
 
-CORS_ORIGIN_REGEX_WHITELIST = ('^((http:\/\/)?([a-zA-Z0-9]+.)?meospa.nl(([a-zA-Z0-9\/])+)?)$', )
+CORS_ORIGIN_REGEX_WHITELIST = (
+    '^((http:\/\/)?([a-zA-Z0-9]+.)?meospa.nl(([a-zA-Z0-9\/])+)?)$',
+    '^((http:\/\/)?([a-zA-Z0-9]+.)?localhost(:([0-9]{1,5})?))$',
+)
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
