@@ -38,7 +38,7 @@ class AddressViewSet(viewsets.ModelViewSet):
 class RegistrationSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Registration
-        fields = ('id', 'url', 'person', 'title', 'mk', 'role', 'type', 'date')
+        fields = ('id', 'url', 'person', 'title', 'mk', 'role', 'type', 'date', 'form')
 
 
 class RegistrationViewSet(viewsets.ModelViewSet):

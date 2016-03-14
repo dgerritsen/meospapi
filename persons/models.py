@@ -39,7 +39,7 @@ class Person(models.Model):
     birth_place = models.CharField(max_length=200)
     birth_country = models.CharField(max_length=200)
     nationality = models.CharField(max_length=200)
-    dangers = models.ManyToManyField(DangerClass, blank=True, null=True)
+    dangers = models.ManyToManyField(DangerClass, blank=True)
 
     def __unicode__(self):
         return self.initials + ' ' + self.last_name + ' (' + self.first_name + ')'
@@ -92,4 +92,5 @@ class Registration(models.Model):
     role = models.CharField(max_length=50)
     type = models.CharField(max_length=10)
     date = models.DateField(blank=True, null=True)
+    form = models.FileField(upload_to='forms/', blank=True, null=True)
 
