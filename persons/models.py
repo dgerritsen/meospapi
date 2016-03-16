@@ -92,5 +92,5 @@ class Registration(models.Model):
     role = models.CharField(max_length=50)
     type = models.CharField(max_length=10)
     date = models.DateField(blank=True, null=True)
-    form = models.FileField(upload_to='forms/', blank=True, null=True)
+    form = models.URLField(blank=True, null=True)
 
