@@ -54,6 +54,7 @@ CORS_ORIGIN_WHITELIST = (
 
 CORS_ORIGIN_REGEX_WHITELIST = (
     '^((http:\/\/)?([a-zA-Z0-9]+.)?meospa.nl(([a-zA-Z0-9\/])+)?)$',
+    '^((https:\/\/)?([a-zA-Z0-9]+.)?meospa.nl(([a-zA-Z0-9\/])+)?)$',
     '^((http:\/\/)?([a-zA-Z0-9]+.)?localhost(:([0-9]{1,5})?))$',
 )
 
