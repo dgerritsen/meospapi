@@ -8,6 +8,7 @@ from persons.serializers import PersonViewSet, PersonSignalViewSet, Driverslicen
 from vehicles.serializers import VehicleViewSet, VehicleSignalViewSet
 from django.conf.urls import url
 from django.contrib import admin
+from rest_framework.authtoken import views
 
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
@@ -26,6 +27,10 @@ urlpatterns = [
     url(r'^', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^admin/', admin.site.urls),
+]
+
+urlpatterns += [
+    url(r'^api-token-auth/', views.obtain_auth_token)
 ]
 
 urlpatterns += patterns('', (
