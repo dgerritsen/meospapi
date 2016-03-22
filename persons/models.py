@@ -4,6 +4,7 @@ from django.db import models
 from django.conf import settings
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.utils.safestring import mark_safe
 from rest_framework.authtoken.models import Token
 
 
@@ -53,6 +54,9 @@ class Person(models.Model):
 
     def keno(self):
         return self.last_name[:4].lower() + self.first_name[0].lower() + self.birth_date.strftime('%y%m%d')
+
+    def danger_list(self):
+        return mark_safe("<br/>".join([d.description for d in self.dangers.all()]))
 
 
 class PersonSignal(models.Model):
