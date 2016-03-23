@@ -35,4 +35,4 @@ class VehicleSignal(models.Model):
     reference = models.CharField(max_length=100)
 
     def __unicode__(self):
-        return self.vehicle + ' (' + self.code + ')'
+        return self.vehicle.license + ' (' + self.code + ')'
