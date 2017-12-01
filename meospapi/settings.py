@@ -94,7 +94,18 @@ WSGI_APPLICATION = 'meospapi.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
-DATABASES = {'default': dj_database_url.config(default='postgres://Dion:@localhost/meospapi')}
+# DATABASES = {'default': dj_database_url.config(default='postgres://Dion:@localhost/meospapi')}
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'meospapi',
+        'USER': 'postgres',
+        'PASSWORD': 'test1234',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
+    }
+}
 
 
 # Password validation
